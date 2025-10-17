@@ -1,0 +1,9 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Message Sent Successfully!</h2>
+    <p>Thank you for contacting us. We will get back to you soon.</p>
+    <a href="{% url 'home' %}" class="btn btn-primary mt-3">Go to Home</a>
+</div>
+{% endblock %}
