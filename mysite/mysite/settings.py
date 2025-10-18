@@ -150,5 +150,21 @@ ALLOWED_HOSTS = ['*']
 
 # Serve static files correctly
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+import os
+import dj_database_url
+from decouple import config
+
+ALLOWED_HOSTS = ['*']
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
+# Configure database (for Render)
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=False)
+
+# Whitenoise for static files
+MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 
